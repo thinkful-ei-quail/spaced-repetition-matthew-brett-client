@@ -1,8 +1,37 @@
 /* TODO Form css. */
-.Label {}
 
-.Input {}
+.reg {
+  width: 95vw;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
 
-.Required {}
+.LoginForm {
+  width: 80vw;
+}
 
-.Textarea {}
+.LoginForm,
+.RegistrationForm {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.input {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.25em 2em 0.25em 2em;
+}
+
+.Label {
+}
+
+.Input {
+}
+
+.Required {
+}
+
+.Textarea {
+}

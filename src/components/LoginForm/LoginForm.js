@@ -5,6 +5,7 @@ import UserContext from "../../contexts/UserContext";
 import Button from "../Button/Button";
 
 import "./LoginForm.css";
+import "../Form/Form.css";
 
 class LoginForm extends Component {
   static defaultProps = {
@@ -47,7 +48,7 @@ class LoginForm extends Component {
     return (
       <form className="LoginForm light window" onSubmit={this.handleSubmit}>
         <div role="alert">{error && <p>{error}</p>}</div>
-        <div>
+        <div className="input">
           <Label htmlFor="login-username-input">Username</Label>
           <Input
             ref={this.firstInput}
@@ -56,7 +57,7 @@ class LoginForm extends Component {
             required
           />
         </div>
-        <div>
+        <div className="input">
           <Label htmlFor="login-password-input">Password</Label>
           <Input
             id="login-password-input"
