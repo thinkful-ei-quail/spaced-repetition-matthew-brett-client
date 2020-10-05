@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 class LearningRoute extends Component {
+  // TODO Implement and style Learning.
   render() {
     return (
       <section>
