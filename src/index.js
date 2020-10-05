@@ -7,7 +7,7 @@ import App from './components/App/App'
 import './setup-icons'
 
 import './reset.css'
-import './prefabs.css'
+import './prefab.css'
 import './index.css'
 import * as serviceWorker from './serviceWorker'
 
