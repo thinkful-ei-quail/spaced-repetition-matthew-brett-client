@@ -1,6 +1,23 @@
 /* TODO Header css. */
 
 header {
-  text-align: right;
-  margin-bottom: 1em;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.left {
+  float: left;
+}
+
+.center {
+  width: 60%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.right {
+  position: absolute;
+  right: 0;
+  top: 0;
 }

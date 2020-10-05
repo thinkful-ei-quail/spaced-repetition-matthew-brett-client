@@ -1,1 +1,22 @@
+/* TODO Login form css. */
 
+.LoginForm {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 16vw;
+  padding-top: 10px;
+}
+
+.input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.LoginForm footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}

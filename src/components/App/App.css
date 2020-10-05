@@ -1,8 +1,8 @@
 /* TODO App css. */
 
 .App {
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
 
   display: flex;
   flex-direction: column;
@@ -16,4 +16,37 @@
     rgba(114, 104, 104, 0.236) 100%
   );
   color: rgba(255, 255, 255, 1);
+}
+
+section {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+  margin: 0.5em;
+}
+
+p {
+  line-height: 1.25em;
+  color: black;
+}
+
+h2 {
+  line-height:1.5em;
+  color: black;
+  text-align: center;
+}
+
+a {
+  color: black;
+}
+
+footer{
+  text-align: center;
 }

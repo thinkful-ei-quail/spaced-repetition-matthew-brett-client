@@ -1,1 +1,22 @@
 /* TODO Registration form css. */
+
+.RegistrationForm {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  width: 20vw;
+  padding-top: 10px;
+}
+
+.input {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.RegistrationForm footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px;
+}
