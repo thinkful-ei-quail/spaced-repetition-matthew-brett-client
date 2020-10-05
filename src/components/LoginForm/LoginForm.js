@@ -44,13 +44,13 @@ class LoginForm extends Component {
     const { error } = this.state
     return (
       <form
-        className='LoginForm'
+        className='LoginForm blue window'
         onSubmit={this.handleSubmit}
       >
         <div role='alert'>
           {error && <p>{error}</p>}
         </div>
-        <div className="red window">
+        <div >
           <Label htmlFor='login-username-input'>
             Username
           </Label>
