@@ -4,6 +4,8 @@ import AuthApiService from "../../services/auth-api-service";
 import UserContext from "../../contexts/UserContext";
 import Button from "../Button/Button";
 
+import "./LoginForm.css";
+
 class LoginForm extends Component {
   static defaultProps = {
     onLoginSuccess: () => {},
@@ -63,9 +65,7 @@ class LoginForm extends Component {
             required
           />
         </div>
-        <Button type="submit" className="red window">
-          Login
-        </Button>
+        <Button type="submit">Login</Button>
       </form>
     );
   }
