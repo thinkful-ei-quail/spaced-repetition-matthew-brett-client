@@ -16,6 +16,10 @@ header {
   text-align: center;
 }
 
+.center a {
+  text-decoration: none;
+}
+
 .right {
   position: absolute;
   right: 0;
