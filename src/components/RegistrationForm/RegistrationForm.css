@@ -4,8 +4,10 @@
   display: flex;
   flex-direction: column;
   align-content: center;
-  width: 20vw;
+  width: auto;
   padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 .input {
