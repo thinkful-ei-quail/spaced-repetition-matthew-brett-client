@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import WordListPage from '../../components/WordListPage/WordListPage';
 import UserContext from '../../contexts/UserContext';
 
 import './DashboardRoute.css';
@@ -18,11 +19,11 @@ class DashboardRoute extends Component {
   state = { error: null };
 
   renderLanguage = () => {
-    return this.context.userData.language;
+    return this.context.userLanguage;
   }
 
   renderScore = () => {
-    return this.context.userData.score;
+    return this.context.userScore;
   }
 
   render() {
@@ -44,6 +45,7 @@ class DashboardRoute extends Component {
           <section>
             <p>words to learn, and correct/wrong ratio.</p>
             <p>Ex: "Escargo 5/3"</p>
+            <WordListPage />
           </section>
         </div>
       </section>

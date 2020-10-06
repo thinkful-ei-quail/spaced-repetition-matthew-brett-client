@@ -6,7 +6,9 @@ import LanguageService from "../services/language-service";
 
 const UserContext = React.createContext({
   user: {},
-  userData: {},
+  userLanguage: '',
+  userScore: 0,
+  userWords: [],
   error: null,
   setError: () => {},
   clearError: () => {},
@@ -20,7 +22,7 @@ export default UserContext;
 export class UserProvider extends Component {
   constructor(props) {
     super(props);
-    const state = { user: {}, userData: {}, error: null };
+    const state = { user: {}, userLanguage: '', userScore: 0, userWords: [], error: null };
 
     const jwtPayload = TokenService.parseAuthToken();
 
@@ -106,24 +108,28 @@ export class UserProvider extends Component {
 
   setLanguage = (lang) => {
     const userData = {
-      language: lang,
-      score: this.state.userData.score
+      userLanguage: lang,
     }
-    this.setState({userData})
+    this.setState(userData)
   }
 
   setUserScore = (score) => {
     const userData = {
-      language: this.state.userData.language,
-      score: score
+      userScore: score,
     }
-    this.setState({userData})
+    this.setState(userData)
+  }
+
+  setUserWords = (words) => {
+    const userData = {
+      userWords: words
+    }
+    this.setState(userData)
   }
 
   processUserData = () => {
     LanguageService.getLanguage()
       .then (res => {
-        console.log(res)
         this.setLanguage(res.language.name);
         this.setUserScore(res.language.total_score);
       })
@@ -132,13 +138,16 @@ export class UserProvider extends Component {
   render() {
     const value = {
       user: this.state.user,
-      userData: this.state.userData,
+      userLanguage: this.state.userLanguage,
+      userScore: this.state.userScore,
+      userWords: this.state.userWords,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
+      setUserWords: this.setUserWords
     };
     return (
       <UserContext.Provider value={value}>
