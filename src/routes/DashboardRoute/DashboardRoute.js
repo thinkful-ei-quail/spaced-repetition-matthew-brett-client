@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import UserContext from '../../contexts/UserContext';
 
 import './DashboardRoute.css';
 
@@ -12,16 +13,28 @@ class DashboardRoute extends Component {
       - Shows total score for guessing words correctly.
   */
 
+  static contextType = UserContext;
+
+  state = { error: null };
+
+  renderLanguage = () => {
+    return this.context.userData.language;
+  }
+
+  renderScore = () => {
+    return this.context.userData.score;
+  }
+
   render() {
     return (
       <section className='dashboard'>
         <h2>La Dashboard</h2>
         <div className='userInfo light window'>
           <section>
-            <p>My language: French</p>
+            <p>My language: {this.renderLanguage()}</p>
           </section>
           <section>
-            <p>My Score: 69</p>
+            <p>My Score: {this.renderScore()}</p>
           </section>
           <section>
             <p>Start Practicing: <input type='button' value='Begin' /></p>

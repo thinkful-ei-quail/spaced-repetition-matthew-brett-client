@@ -10,7 +10,7 @@ import LearningRoute from "../../routes/LearningRoute/LearningRoute";
 import NotFoundRoute from "../../routes/NotFoundRoute/NotFoundRoute";
 import "./App.css";
 
-import api from "../../services/language-service";
+// import api from "../../services/language-service";
 
 export default class App extends Component {
   state = { hasError: false };

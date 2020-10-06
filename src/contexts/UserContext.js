@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import AuthApiService from "../services/auth-api-service";
 import TokenService from "../services/token-service";
 import IdleService from "../services/idle-service";
+import LanguageService from "../services/language-service";
 
 const UserContext = React.createContext({
   user: {},
+  userData: {},
   error: null,
   setError: () => {},
   clearError: () => {},
@@ -18,7 +20,7 @@ export default UserContext;
 export class UserProvider extends Component {
   constructor(props) {
     super(props);
-    const state = { user: {}, error: null };
+    const state = { user: {}, userData: {}, error: null };
 
     const jwtPayload = TokenService.parseAuthToken();
 
@@ -72,6 +74,7 @@ export class UserProvider extends Component {
     TokenService.queueCallbackBeforeExpiry(() => {
       this.fetchRefreshToken();
     });
+    this.processUserData();
   };
 
   processLogout = () => {
@@ -101,9 +104,35 @@ export class UserProvider extends Component {
       });
   };
 
+  setLanguage = (lang) => {
+    const userData = {
+      language: lang,
+      score: this.state.userData.score
+    }
+    this.setState({userData})
+  }
+
+  setUserScore = (score) => {
+    const userData = {
+      language: this.state.userData.language,
+      score: score
+    }
+    this.setState({userData})
+  }
+
+  processUserData = () => {
+    LanguageService.getLanguage()
+      .then (res => {
+        console.log(res)
+        this.setLanguage(res.language.name);
+        this.setUserScore(res.language.total_score);
+      })
+  };
+
   render() {
     const value = {
       user: this.state.user,
+      userData: this.state.userData,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
