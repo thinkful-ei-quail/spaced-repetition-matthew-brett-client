@@ -11,6 +11,8 @@ export default class WordListPage extends Component {
 
   static contextType = userContext;
 
+  state = { error: null };
+
   componentDidMount() {
     // Retrieve word list.
     this.context.clearError();
@@ -35,9 +37,9 @@ export default class WordListPage extends Component {
   render() {
     const {error} = this.context;
     return (
-      <section className='word-list'>
+      <ul className='word-list'>
         {error ? <p className='red'>There was an error, please try again.</p> : this.renderWords()}
-      </section>
+      </ul>
     )
   };
 };

@@ -18,11 +18,13 @@ export default class Word extends Component {
     const {word} = this.props;
     // TODO Implement Correct and Incorrect in word data to display them on word cards.
     return (
-      <section className='word-card window'>
-        <h4 className='word'>{word.original}</h4>
-        <p className='correct'>Correct answer count: {word.correct_count}</p>
-        <p className='incorrect'>Incorrect answer count: {word.incorrect_count}</p>
-      </section>
+      <li>
+        <section className='word-card window'>
+          <h4 className='word'>{word.original}</h4>
+          <p className='correct'>Correct answer count: {word.correct_count}</p>
+          <p className='incorrect'>Incorrect answer count: {word.incorrect_count}</p>
+        </section>
+      </li>
     );
   };
 };

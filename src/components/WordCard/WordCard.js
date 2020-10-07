@@ -18,6 +18,7 @@ export default class WordCard extends Component {
 
   renderWordCard() {
     // Create word card?
+    // pass card through props.
     // Returning test layout card.
     return (
       <>

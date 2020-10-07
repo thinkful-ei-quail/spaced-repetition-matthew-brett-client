@@ -9,6 +9,7 @@ const UserContext = React.createContext({
   userLanguage: '',
   userScore: 0,
   userWords: [],
+  currentWord: {},
   error: null,
   setError: () => {},
   clearError: () => {},
@@ -22,7 +23,7 @@ export default UserContext;
 export class UserProvider extends Component {
   constructor(props) {
     super(props);
-    const state = { user: {}, userLanguage: '', userScore: 0, userWords: [], error: null };
+    const state = { user: {}, userLanguage: '', userScore: 0, userWords: [], currentWord: {}, error: null };
 
     const jwtPayload = TokenService.parseAuthToken();
 
@@ -127,6 +128,13 @@ export class UserProvider extends Component {
     this.setState(userData)
   }
 
+  setCurrentWord = (word) => {
+    const userData = {
+      currentWord: word
+    }
+    this.setState(userData)
+  }
+
   processUserData = () => {
     LanguageService.getLanguage()
       .then (res => {
@@ -141,13 +149,15 @@ export class UserProvider extends Component {
       userLanguage: this.state.userLanguage,
       userScore: this.state.userScore,
       userWords: this.state.userWords,
+      currentWord: this.state.currentWord,
       error: this.state.error,
       setError: this.setError,
       clearError: this.clearError,
       setUser: this.setUser,
       processLogin: this.processLogin,
       processLogout: this.processLogout,
-      setUserWords: this.setUserWords
+      setUserWords: this.setUserWords,
+      setCurrentWord: this.setCurrentWord
     };
     return (
       <UserContext.Provider value={value}>
