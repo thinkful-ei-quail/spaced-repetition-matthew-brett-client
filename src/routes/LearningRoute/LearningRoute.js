@@ -17,7 +17,7 @@ class LearningRoute extends Component {
   componentDidMount() {
     // get the current word and pass it to the word card via props.
     // TODO Make sure to change res in setCurrentWord call to the correct passed format.
-    // TODO Uncomment catch statement once getHead is implemented server side.
+    // TODO Uncomment .catch statement once getHead is implemented server side. For now, ignore the error thats returned.
     this.context.clearError();
     LanguageService.getHead()
       .then(res => {

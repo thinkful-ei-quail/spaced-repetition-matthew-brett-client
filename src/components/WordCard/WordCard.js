@@ -16,6 +16,11 @@ export default class WordCard extends Component {
     // Retrieve word data? Pull correct word from userContext. Or use LanguageService.
   };
 
+  submitAnswer(ev) {
+    ev.preventDefault();
+    return null;
+  }
+
   renderWordCard() {
     // Create word card?
     // pass card through props.
@@ -25,7 +30,7 @@ export default class WordCard extends Component {
         <h2>Tanslate the word:</h2>
         <span>Escargo</span>
         <p>Your total score is: 9001</p>
-        <form>
+        <form onSubmit={this.submitAnswer}>
           <label for='learn-guess-input'>What's the translation for this word?</label>
           <input id='learn-guess-input' type='text' required='required'/>
           <button type='submit'>Submit your answer</button>
