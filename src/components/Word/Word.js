@@ -19,10 +19,9 @@ export default class Word extends Component {
     // TODO Implement Correct and Incorrect in word data to display them on word cards.
     return (
       <section className='word-card window'>
-        <p className='word'>{word.original}</p>
-        <p>Correct</p>
-        <p className='correct'>{word.correct}</p><p>/</p><p className='incorrect'>{word.incorrect}</p>
-        <p>Incorrect</p>
+        <h4 className='word'>{word.original}</h4>
+        <p className='correct'>Correct answer count: {word.correct_count}</p>
+        <p className='incorrect'>Incorrect answer count: {word.incorrect_count}</p>
       </section>
     );
   };

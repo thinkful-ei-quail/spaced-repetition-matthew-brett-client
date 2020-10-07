@@ -5,4 +5,8 @@
   background: rgba(255, 255, 255, 0.616);
 }
 
+.word-card > h4 {
+color: black;
+}
+
 /* TODO Style text of card to desired appearance */

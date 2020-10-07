@@ -30,22 +30,18 @@ class DashboardRoute extends Component {
   render() {
     return (
       <section className='dashboard'>
-        <h2>La Dashboard</h2>
         <div className='userInfo light window'>
+          <h2>{this.renderLanguage()}</h2>
           <section>
-            <p>My language: {this.renderLanguage()}</p>
+            <p>Total correct answers: {this.renderScore()}</p>
           </section>
           <section>
-            <p>My Score: {this.renderScore()}</p>
-          </section>
-          <section>
-            <p>Start Practicing: <Link onClick={this.handleLogoutClick} to="/learn"><button>Begin</button></Link></p>
+            <button><Link onClick={this.handleLogoutClick} to="/learn">Start Practicing</Link></button>
           </section>
         </div>
         <div className='words light window'>
           <section>
-            <p>words to learn, and correct/wrong ratio.</p>
-            <p>Ex: "Escargo 5/3"</p>
+            <h3>Words to practice</h3>
             <WordListPage />
           </section>
         </div>

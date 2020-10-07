@@ -16,7 +16,6 @@ export default class WordListPage extends Component {
     this.context.clearError();
     LanguageService.getLanguage()
       .then(res => {
-        console.log(res.words);
         this.context.setUserWords(res.words);
       })
       .catch(this.context.setError);
