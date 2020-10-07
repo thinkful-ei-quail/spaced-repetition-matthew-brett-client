@@ -20,7 +20,7 @@ export default class Word extends Component {
     const {word} = this.props;
     // TODO Implement Correct and Incorrect in word data to display them on word cards.
     return (
-      <section className='word-card'>
+      <section className='word-card window'>
         <p className='word'>{word.original}</p>
         <p>Correct</p>
         <p className='correct'>{word.correct}</p><p>/</p><p className='incorrect'>{word.incorrect}</p>

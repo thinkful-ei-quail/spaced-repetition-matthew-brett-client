@@ -1,3 +1,10 @@
 .word-list {
-  /* Add css to make word cards in word list appear in a grid. */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  justify-content: center;
+  padding-top: 1rem;
+  padding-top: 1rem;
 }
