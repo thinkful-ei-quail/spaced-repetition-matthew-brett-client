@@ -10,8 +10,7 @@ class LearningRoute extends Component {
         <h2>Learn!</h2>
         <div className='userScore light window'>
           <section>
-            <p>Display user info here</p>
-            <p>Tesy's Score: 9001</p>
+            <p>Language: Frenchy</p>
           </section>
         </div>
         <div className='wordCard light window'>

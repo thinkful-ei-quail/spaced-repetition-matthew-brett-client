@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import userContext from '../../contexts/UserContext';
-import LanguageService from '../../services/language-service';
+//import LanguageService from '../../services/language-service';
 import './WordCard.css';
 
 // TODO Implement Word Cards, to display the word and let the user enter a guess.
@@ -13,7 +13,7 @@ export default class WordCard extends Component {
   static contextType = userContext;
 
   componentDidMount() {
-    // Retrieve word data?
+    // Retrieve word data? Pull correct word from userContext. Or use LanguageService.
   };
 
   renderWordCard() {
@@ -21,12 +21,18 @@ export default class WordCard extends Component {
     // Returning test layout card.
     return (
       <>
-        <h3>Escargo</h3>
-        <hr />
+        <h2>Tanslate the word:</h2>
+        <span>Escargo</span>
+        <p>Your total score is: 9001</p>
         <form>
-          <input type='textbox' />
-          <input type='button' value='Guess' />
+          <label for='learn-guess-input'>What's the translation for this word?</label>
+          <input id='learn-guess-input' type='text' required='required'/>
+          <button type='submit'>Submit your answer</button>
         </form>
+        <section>
+          <p>You have answered this word correctly 5 times.</p>
+          <p>You have answered this word incorreclty 3 times.</p>
+        </section>
       </>
     )
   };

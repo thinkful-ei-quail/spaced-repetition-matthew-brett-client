@@ -2,7 +2,7 @@
   justify-content: center;
 }
 
-.wordCard > h3 {
+.wordCard > span {
   color: black;
   font-size: 8rem;
 }
