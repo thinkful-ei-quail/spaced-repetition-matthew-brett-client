@@ -1,0 +1,8 @@
+.wordCard {
+  justify-content: center;
+}
+
+.wordCard > h3 {
+  color: black;
+  font-size: 8rem;
+}

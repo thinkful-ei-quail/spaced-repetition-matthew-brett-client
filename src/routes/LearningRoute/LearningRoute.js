@@ -1,11 +1,24 @@
 import React, { Component } from 'react'
+import WordCard from '../../components/WordCard/WordCard';
+import './LearningRoute.css';
 
 class LearningRoute extends Component {
   // TODO Implement and style Learning.
   render() {
     return (
-      <section>
-        implement and style me
+      <section className='learn'>
+        <h2>Learn!</h2>
+        <div className='userScore light window'>
+          <section>
+            <p>Display user info here</p>
+            <p>Tesy's Score: 9001</p>
+          </section>
+        </div>
+        <div className='wordCard light window'>
+          <section>
+            <WordCard />
+          </section>
+        </div>
       </section>
     );
   }

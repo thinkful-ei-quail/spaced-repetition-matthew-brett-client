@@ -4,8 +4,6 @@ import LanguageService from '../../services/language-service';
 import Word from '../Word/Word';
 import './WordListPage.css';
 
-// TODO WordListPage component
-
 export default class WordListPage extends Component {
   static defaultProps = {
     match: { params: {} }
@@ -27,7 +25,6 @@ export default class WordListPage extends Component {
   renderWords() {
     // Create list of words cards
     const {userWords} = this.context;
-    console.log(userWords);
     return userWords.map(word => 
       <Word 
         key={word.id}

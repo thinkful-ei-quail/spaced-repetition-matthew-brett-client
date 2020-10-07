@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import WordListPage from '../../components/WordListPage/WordListPage';
 import UserContext from '../../contexts/UserContext';
+import {Link} from 'react-router-dom'
 
 import './DashboardRoute.css';
 
@@ -38,7 +39,7 @@ class DashboardRoute extends Component {
             <p>My Score: {this.renderScore()}</p>
           </section>
           <section>
-            <p>Start Practicing: <input type='button' value='Begin' /></p>
+            <p>Start Practicing: <Link onClick={this.handleLogoutClick} to="/learn"><button>Begin</button></Link></p>
           </section>
         </div>
         <div className='words light window'>

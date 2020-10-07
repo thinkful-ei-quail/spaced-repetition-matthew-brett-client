@@ -1,26 +1,26 @@
-.dashboard {
+.learn{
   width: 100vw;
   height: 95vh;
 }
 
-.dashboard > h2 {
+.learn > h2 {
   font-size: x-large;
 }
 
-.dashboard section {
+.learn section {
   width: auto;
 }
 
-.userInfo {
+.userScore {
   display: flex;
   flex-direction: column;
   width: 30%;
   justify-content: center;
 }
 
-.words {
+.wordCard {
   display: flex;
   flex-direction: column;
   width: 50%;
-  height: 80%;
+  height: 70%
 }

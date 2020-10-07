@@ -1,8 +1,6 @@
 import React,  { Component } from 'react';
 import './Word.css';
 
-// TODO Word component.
-
 export default class Word extends Component {
   state = {
     word: {}
