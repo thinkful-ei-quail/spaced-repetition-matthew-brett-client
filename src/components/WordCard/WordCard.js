@@ -14,6 +14,7 @@ export default class WordCard extends Component {
 
   submitAnswer(ev) {
     ev.preventDefault();
+    this.props.handleSubmit();
     return null;
   }
 
@@ -22,7 +23,7 @@ export default class WordCard extends Component {
     // pass card through props.
     // Returning test layout card.
     const {userScore} = this.context;
-    const word = this.props.word === undefined ? this.props.word : {original: 'Escargo', correct_count: 5, incorrect_count: 3}
+    const word = this.props.word === undefined ? this.props.word : {original: 'Escargot', correct_count: 5, incorrect_count: 3}
     return (
       <>
         <h2>Tanslate the word:</h2>

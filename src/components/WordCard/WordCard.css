@@ -5,4 +5,14 @@
 .wordCard > span {
   color: black;
   font-size: 8rem;
+  padding-bottom: 25px;
+}
+
+.wordCard form {
+  display: flex;
+  flex-direction: column;
+}
+
+.wordCard form > label {
+  color: black;
 }

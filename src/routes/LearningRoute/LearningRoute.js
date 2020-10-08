@@ -12,7 +12,10 @@ class LearningRoute extends Component {
   
   static contextType = UserContext;
 
-  state = { error: null };
+  state = {
+    error: null,
+    submitted: false
+  };
 
   componentDidMount() {
     // get the current word and pass it to the word card via props.
@@ -26,6 +29,26 @@ class LearningRoute extends Component {
       //.catch(this.context.setError);
   }
 
+  handleSubmit() {
+    // TODO Apply changes to userScore based on correct/incorrect.
+    //      API call to /language/guess to submit answer and get reply about correctness.
+    this.setState({submitted: true});
+  }
+
+  handleNext() {
+    // TODO Load next wordCard.
+    this.setState({submitted: false});
+  }
+
+  renderFeedback() {
+    // TODO If submitted answer is correct/incorrect, provide proper feedback
+    //      as well as a next word button.
+    return (
+      <>
+      </>
+    )
+  }
+
   render() {
     const {currentWord, userLanguage} = this.context;
     return (
@@ -37,8 +60,11 @@ class LearningRoute extends Component {
           </section>
         </div>
         <div className='wordCard light window'>
+          <section className='feedback'>
+            {this.state.submitted ? this.renderFeedback() : <></> /* TODO replace empty jsx with WordCard? */}
+          </section>
           <section>
-            <WordCard key={currentWord.id} word={currentWord}/>
+            <WordCard key={currentWord.id} word={currentWord} submit={this.handleSubmit}/>
           </section>
         </div>
       </section>
