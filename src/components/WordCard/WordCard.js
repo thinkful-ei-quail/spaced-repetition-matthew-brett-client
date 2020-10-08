@@ -33,7 +33,9 @@ export default class WordCard extends Component {
     return (
       <>
         <h2>Tanslate the word:</h2>
-        <span>{word.original}</span>
+        <svg viewBox='0 0 90 50'>
+          <text x='0' y='25'>{word.original}</text>
+        </svg>
         <p>Your total score is: {userScore}</p>
         <form onSubmit={this.submitAnswer}>
           <label htmlFor='learn-guess-input'>What's the translation for this word?</label>

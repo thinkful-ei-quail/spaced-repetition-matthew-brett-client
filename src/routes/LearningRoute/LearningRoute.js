@@ -82,12 +82,14 @@ class LearningRoute extends Component {
       return (
         <>
           <p>Correct!</p>
+          <button>Next</button>
         </>
       )
     } else {
       return (
         <>
           <p>Incorrect!</p>
+          <button>Next</button>
         </>
       )
     }
@@ -95,7 +97,7 @@ class LearningRoute extends Component {
 
   renderWordCard() {
     console.log(this.state.submitted);
-    if (!this.state.submitted || !this.context.currentWord) {
+    if (!this.state.submitted) {
       return <WordCard key={1} word={this.context.currentWord} handleSubmit={this.handleSubmit}/>
     } else {
       return <></>
@@ -116,7 +118,7 @@ class LearningRoute extends Component {
         </div>
         <div className='wordCard light window'>
           <section className={isSubmitted ? 'feedback' : ''}>
-            {this.renderFeedback()}
+            {isSubmitted ? this.renderFeedback() : <></>}
           </section>
           <section>
             {this.renderWordCard()}
