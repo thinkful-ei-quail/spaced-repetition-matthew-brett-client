@@ -7,10 +7,12 @@ li {
   flex-direction: column;
   min-width: 120px;
   background: rgba(255, 255, 255, 0.616);
+  padding: 15px 15px;
 }
 
 .word-card > h4 {
 color: black;
+font-size: larger;
 }
 
 /* TODO Style text of card to desired appearance */

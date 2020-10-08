@@ -22,28 +22,52 @@ class LearningRoute extends Component {
     // get the current word and pass it to the word card via props.
     // TODO Make sure to change res in setCurrentWord call to the correct passed format.
     // TODO Uncomment .catch statement once getHead is implemented server side. For now, ignore the error thats returned.
+    /* LanguageService.getHead() response structure:
+      nextWord: headWord.original,
+      totalScore: req.language.total_score,
+      wordCorrectCount: headWord.correct_count,
+      wordIncorrectCount: headWord.incorrect_count,
+    */
     this.context.clearError();
     LanguageService.getHead()
       .then(res => {
-        this.context.setCurrentWord(res)
+        const word = {
+          original: res.nextWord,
+          correct_count: res.wordCorrectCount,
+          incorrect_count: res.wordIncorrectCount
+        }
+        this.context.setCurrentWord(word);
+        this.context.setUserScore(res.totalScore);
       })
-      //.catch(this.context.setError);
+      .catch(this.context.setError);
   }
 
-  handleSubmit(answer) {
+  handleSubmit = (answer) => {
     // TODO Apply changes to userScore based on correct/incorrect.
-    //      API call to /language/guess to submit answer and get reply about correctness.
+    //      API call to /language/guess through LanguageService to submit answer and get reply about correctness.
+    /* LanguageService.submitGuess() response structure:
+      const response = {
+        nextWord: wordList.head.value.original,
+        wordCorrectCount: wordList.head.value.correct_count,
+        wordIncorrectCount: wordList.head.value.incorrect_count,
+        totalScore: req.language.total_score,
+        answer: previousHead.value.translation,
+        isCorrect: isCorrect,
+      };
+    */
     LanguageService.submitGuess(answer)
       .then(res => {
-        if (res === true) {
-          this.setState({submitted: true, correct: true});
+        if (res.isCorrect === true) {
+          this.setState({submitted: true});
+          this.setState({correct: true});
           this.context.setUserScore(this.context.userScore + 1);
         } else {
           this.setState({submitted: true});
+          this.setState({correct: false});
           this.context.setUserScore(this.context.userScore - 1);
         }
       })
-      //.catch(this.context.setError);
+      .catch(this.context.setError);
   }
 
   handleNext() {
@@ -69,8 +93,19 @@ class LearningRoute extends Component {
     }
   }
 
+  renderWordCard() {
+    console.log(this.state.submitted);
+    if (!this.state.submitted || !this.context.currentWord) {
+      return <WordCard key={1} word={this.context.currentWord} handleSubmit={this.handleSubmit}/>
+    } else {
+      return <></>
+    }
+  }
+
   render() {
-    const {currentWord, userLanguage} = this.context;
+    const {userLanguage} = this.context;
+    console.log(this.state.submitted);
+    const isSubmitted = this.state.submitted;
     return (
       <section className='learn'>
         <h2>Learn!</h2>
@@ -80,11 +115,11 @@ class LearningRoute extends Component {
           </section>
         </div>
         <div className='wordCard light window'>
-          <section className='feedback'> {/* {this.state.submitted ? 'feedback' : ''} */}
-            {this.state.submitted ? this.renderFeedback() : <></> /* TODO replace empty jsx with WordCard? */}
+          <section className={isSubmitted ? 'feedback' : ''}>
+            {this.renderFeedback()}
           </section>
           <section>
-            <WordCard key={currentWord.id} word={currentWord} submit={this.handleSubmit}/>
+            {this.renderWordCard()}
           </section>
         </div>
       </section>

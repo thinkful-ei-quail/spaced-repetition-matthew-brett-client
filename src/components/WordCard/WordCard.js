@@ -4,22 +4,32 @@ import userContext from '../../contexts/UserContext';
 import './WordCard.css';
 
 export default class WordCard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {value: ''};
+    this.handleChange = this.handleChange.bind(this);
+    this.submitAnswer = this.submitAnswer.bind(this);
+  };
+
   static defaultProps = { 
     match: { params: {} }
   };
-
   static contextType = userContext;
 
   submitAnswer(ev) {
     ev.preventDefault();
-    this.props.handleSubmit(ev.target.input);
-    return null;
+    this.props.handleSubmit(this.state.value);
+  }
+
+  handleChange(event) {
+    this.setState({value: event.target.value})
   }
 
   renderWordCard() {
     const {userScore} = this.context;
-    // TODO Returning test layout card if no card is properly provided. For testing only.
-    const word = this.props.word === undefined ? this.props.word : {original: 'Escargot', correct_count: 5, incorrect_count: 3}
+    // Returning test layout card if no card is properly provided.
+    console.log(this.props)
+    const word = this.props.word// !== undefined ? this.props.word : {original: 'Escargot', correct_count: 5, incorrect_count: 3}
     return (
       <>
         <h2>Tanslate the word:</h2>
@@ -27,7 +37,7 @@ export default class WordCard extends Component {
         <p>Your total score is: {userScore}</p>
         <form onSubmit={this.submitAnswer}>
           <label htmlFor='learn-guess-input'>What's the translation for this word?</label>
-          <input id='learn-guess-input' type='text' required='required'/>
+          <input id='learn-guess-input' type='text' required='required' value={this.state.value} onChange={this.handleChange}/>
           <button type='submit'>Submit your answer</button>
         </form>
         <section>
