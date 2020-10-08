@@ -12,7 +12,7 @@ export default class WordCard extends Component {
 
   submitAnswer(ev) {
     ev.preventDefault();
-    this.props.handleSubmit();
+    this.props.handleSubmit(ev.target.input);
     return null;
   }
 

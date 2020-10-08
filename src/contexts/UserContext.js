@@ -157,6 +157,7 @@ export class UserProvider extends Component {
       processLogin: this.processLogin,
       processLogout: this.processLogout,
       setUserWords: this.setUserWords,
+      setUserScore: this.setUserScore,
       setCurrentWord: this.setCurrentWord
     };
     return (

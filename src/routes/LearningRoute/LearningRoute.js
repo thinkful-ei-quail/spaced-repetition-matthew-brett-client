@@ -14,7 +14,8 @@ class LearningRoute extends Component {
 
   state = {
     error: null,
-    submitted: false
+    submitted: false,
+    correct: false,
   };
 
   componentDidMount() {
@@ -29,24 +30,43 @@ class LearningRoute extends Component {
       //.catch(this.context.setError);
   }
 
-  handleSubmit() {
+  handleSubmit(answer) {
     // TODO Apply changes to userScore based on correct/incorrect.
     //      API call to /language/guess to submit answer and get reply about correctness.
-    this.setState({submitted: true});
+    LanguageService.submitGuess(answer)
+      .then(res => {
+        if (res === true) {
+          this.setState({submitted: true, correct: true});
+          this.context.setUserScore(this.context.userScore + 1);
+        } else {
+          this.setState({submitted: true});
+          this.context.setUserScore(this.context.userScore - 1);
+        }
+      })
+      //.catch(this.context.setError);
   }
 
   handleNext() {
     // TODO Load next wordCard.
-    this.setState({submitted: false});
+    this.setState({submitted: false, correct: false});
   }
 
   renderFeedback() {
     // TODO If submitted answer is correct/incorrect, provide proper feedback
     //      as well as a next word button.
-    return (
-      <>
-      </>
-    )
+    if (this.state.correct === true){
+      return (
+        <>
+          <p>Correct!</p>
+        </>
+      )
+    } else {
+      return (
+        <>
+          <p>Incorrect!</p>
+        </>
+      )
+    }
   }
 
   render() {
