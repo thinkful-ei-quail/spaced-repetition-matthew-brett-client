@@ -3,7 +3,7 @@ import userContext from '../../contexts/UserContext';
 //import LanguageService from '../../services/language-service';
 import './WordCard.css';
 
-// TODO Implement Word Cards, to display the word and let the user enter a guess.
+// TODO Implement Word Cards, to let a user submit their geuss. Possibly move submission to usercontext or learningroute.
 
 export default class WordCard extends Component {
   static defaultProps = { 
@@ -11,10 +11,6 @@ export default class WordCard extends Component {
   };
 
   static contextType = userContext;
-
-  componentDidMount() {
-    // Retrieve word data? Pull correct word from userContext. Or use LanguageService.
-  };
 
   submitAnswer(ev) {
     ev.preventDefault();
@@ -25,19 +21,21 @@ export default class WordCard extends Component {
     // Create word card?
     // pass card through props.
     // Returning test layout card.
+    const {userScore} = this.context;
+    const word = this.props.word === undefined ? this.props.word : {original: 'Escargo', correct_count: 5, incorrect_count: 3}
     return (
       <>
         <h2>Tanslate the word:</h2>
-        <span>Escargo</span>
-        <p>Your total score is: 9001</p>
+        <span>{word.original}</span>
+        <p>Your total score is: {userScore}</p>
         <form onSubmit={this.submitAnswer}>
-          <label for='learn-guess-input'>What's the translation for this word?</label>
+          <label htmlFor='learn-guess-input'>What's the translation for this word?</label>
           <input id='learn-guess-input' type='text' required='required'/>
           <button type='submit'>Submit your answer</button>
         </form>
         <section>
-          <p>You have answered this word correctly 5 times.</p>
-          <p>You have answered this word incorreclty 3 times.</p>
+          <p>You have answered this word correctly {word.correct_count} times.</p>
+          <p>You have answered this word incorreclty {word.incorrect_count} times.</p>
         </section>
       </>
     )

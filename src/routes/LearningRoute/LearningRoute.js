@@ -27,18 +27,18 @@ class LearningRoute extends Component {
   }
 
   render() {
-    const {currentWord} = this.context;
+    const {currentWord, userLanguage} = this.context;
     return (
       <section className='learn'>
         <h2>Learn!</h2>
         <div className='userScore light window'>
           <section>
-            <p>Language: {'Frenchy'/* replace with props loaded version */}</p>
+            <p>Language: {userLanguage}</p>
           </section>
         </div>
         <div className='wordCard light window'>
-          <section>{/* TODO In WordCard below: key={card.id} card={card} */}
-            <WordCard />
+          <section>
+            <WordCard key={currentWord.id} word={currentWord}/>
           </section>
         </div>
       </section>
