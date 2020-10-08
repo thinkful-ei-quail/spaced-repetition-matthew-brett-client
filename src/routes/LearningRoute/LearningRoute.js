@@ -60,7 +60,7 @@ class LearningRoute extends Component {
           </section>
         </div>
         <div className='wordCard light window'>
-          <section className='feedback'>
+          <section className='feedback'> {/* {this.state.submitted ? 'feedback' : ''} */}
             {this.state.submitted ? this.renderFeedback() : <></> /* TODO replace empty jsx with WordCard? */}
           </section>
           <section>

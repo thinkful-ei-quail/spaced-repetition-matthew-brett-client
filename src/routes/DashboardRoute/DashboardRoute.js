@@ -6,15 +6,6 @@ import {Link} from 'react-router-dom'
 import './DashboardRoute.css';
 
 class DashboardRoute extends Component {
-  // TODO Implement and style Dashboard. Displays users progress.
-  /*
-      - Shows users language.
-      - Shows words to learn in the language.
-      - Shows count for correct and incorrect for each word.
-      - Shows button/link to start learning.
-      - Shows total score for guessing words correctly.
-  */
-
   static contextType = UserContext;
 
   state = { error: null };

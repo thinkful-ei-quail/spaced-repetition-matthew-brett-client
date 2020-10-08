@@ -3,8 +3,6 @@ import userContext from '../../contexts/UserContext';
 //import LanguageService from '../../services/language-service';
 import './WordCard.css';
 
-// TODO Implement Word Cards, to let a user submit their geuss. Possibly move submission to usercontext or learningroute.
-
 export default class WordCard extends Component {
   static defaultProps = { 
     match: { params: {} }
@@ -19,10 +17,8 @@ export default class WordCard extends Component {
   }
 
   renderWordCard() {
-    // Create word card?
-    // pass card through props.
-    // Returning test layout card.
     const {userScore} = this.context;
+    // TODO Returning test layout card if no card is properly provided. For testing only.
     const word = this.props.word === undefined ? this.props.word : {original: 'Escargot', correct_count: 5, incorrect_count: 3}
     return (
       <>
