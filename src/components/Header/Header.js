@@ -42,7 +42,7 @@ class Header extends Component {
           {null}
         </div>
         <h1 className="center">
-          <Link to="/">Spaced repetition</Link>
+          <Link to="/">wordistry</Link>
         </h1>
         {TokenService.hasAuthToken()
           ? this.renderLogoutLink()

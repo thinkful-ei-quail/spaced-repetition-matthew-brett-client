@@ -1,5 +1,7 @@
 # Spaced Repetition Capstone
 
+App Name: Wordistry.
+
 Live demo: https://spaced-repetition-matthew-brett-client.vercel.app
 
 API repo: https://github.com/thinkful-ei-quail/spaced-repetition-matthew-brett-api
