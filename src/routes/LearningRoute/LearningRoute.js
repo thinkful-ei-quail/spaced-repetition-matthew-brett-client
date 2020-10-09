@@ -16,6 +16,8 @@ class LearningRoute extends Component {
     error: null,
     submitted: false,
     correct: false,
+    guess: '',
+    translation: '',
   };
 
   componentDidMount() {
@@ -28,13 +30,17 @@ class LearningRoute extends Component {
       wordCorrectCount: headWord.correct_count,
       wordIncorrectCount: headWord.incorrect_count,
     */
+    this.loadNextWord();
+  }
+
+  loadNextWord = () => {
     this.context.clearError();
     LanguageService.getHead()
       .then(res => {
         const word = {
           original: res.nextWord,
           correct_count: res.wordCorrectCount,
-          incorrect_count: res.wordIncorrectCount
+          incorrect_count: res.wordIncorrectCount,
         }
         this.context.setCurrentWord(word);
         this.context.setUserScore(res.totalScore);
@@ -57,6 +63,8 @@ class LearningRoute extends Component {
     */
     LanguageService.submitGuess(answer)
       .then(res => {
+        this.setState({guess: answer})
+        this.setState({translation: res.answer})
         if (res.isCorrect === true) {
           this.setState({submitted: true});
           this.setState({correct: true});
@@ -70,33 +78,36 @@ class LearningRoute extends Component {
       .catch(this.context.setError);
   }
 
-  handleNext() {
-    // TODO Load next wordCard.
-    this.setState({submitted: false, correct: false});
+  handleNext = () => {
+    this.setState({correct: false});
+    this.setState({submitted: false});
+    this.loadNextWord();
   }
 
   renderFeedback() {
-    // TODO If submitted answer is correct/incorrect, provide proper feedback
-    //      as well as a next word button.
-    if (this.state.correct === true){
+    const {userScore, currentWord} = this.context;
+    if (this.state.correct){
       return (
         <>
-          <p>Correct!</p>
-          <button>Next</button>
+          <p>Your total score is: {userScore}</p>
+          <h2>You were correct! :D</h2>
+          <p>The correct translation for {currentWord.original} was {this.state.translation} and you choose {this.state.guess}!</p>
+          <button onClick={this.handleNext}>Try another word!</button>
         </>
       )
     } else {
       return (
         <>
-          <p>Incorrect!</p>
-          <button>Next</button>
+          <p>Your total score is: {userScore}</p>
+          <h2>Good try, but not quite right :(</h2>
+          <p>The correct translation for {currentWord.original} was {this.state.translation} and you choose {this.state.guess}!</p>
+          <button onClick={this.handleNext}>Try another word!</button>
         </>
       )
     }
   }
 
   renderWordCard() {
-    console.log(this.state.submitted);
     if (!this.state.submitted) {
       return <WordCard key={1} word={this.context.currentWord} handleSubmit={this.handleSubmit}/>
     } else {
@@ -106,7 +117,6 @@ class LearningRoute extends Component {
 
   render() {
     const {userLanguage} = this.context;
-    console.log(this.state.submitted);
     const isSubmitted = this.state.submitted;
     return (
       <section className='learn'>

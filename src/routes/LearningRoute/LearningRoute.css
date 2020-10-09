@@ -24,3 +24,12 @@
   width: 50%;
   height: 70%
 }
+
+.feedback p {
+  font-size: larger;
+  text-align: center;
+}
+
+.feedback h2 {
+  font-size: x-large;
+}

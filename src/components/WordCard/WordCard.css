@@ -8,15 +8,6 @@
   padding-bottom: 25px;
 }
 
-.wordCard svg {
-  width: 60vw;
-}
-
-.wordCard text {
-  padding: 0;
-  margin: 0;
-}
-
 .wordCard form {
   display: flex;
   flex-direction: column;
