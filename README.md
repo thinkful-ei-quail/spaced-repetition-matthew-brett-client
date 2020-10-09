@@ -6,6 +6,10 @@ Live demo: https://spaced-repetition-matthew-brett-client.vercel.app
 
 API repo: https://github.com/thinkful-ei-quail/spaced-repetition-matthew-brett-api
 
+Test Account credentials:
+Username: TestAccount
+Passowrd: Passw0rd!
+
 ## Setup
 
 To setup the application
