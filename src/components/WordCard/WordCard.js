@@ -28,7 +28,7 @@ export default class WordCard extends Component {
   renderWordCard() {
     const {userScore} = this.context;
     // Returning test layout card if no card is properly provided.
-    console.log(this.props)
+    //console.log(this.props)
     const word = this.props.word// !== undefined ? this.props.word : {original: 'Escargot', correct_count: 5, incorrect_count: 3}
     return (
       <>

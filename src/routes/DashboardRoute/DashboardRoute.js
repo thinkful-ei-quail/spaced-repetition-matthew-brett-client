@@ -11,7 +11,7 @@ class DashboardRoute extends Component {
   state = { error: null };
 
   renderLanguage = () => {
-    return this.context.userLanguage;
+    return this.context.userLanguage || 'French';
   }
 
   renderScore = () => {

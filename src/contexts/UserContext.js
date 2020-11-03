@@ -6,7 +6,7 @@ import LanguageService from "../services/language-service";
 
 const UserContext = React.createContext({
   user: {},
-  userLanguage: '',
+  userLanguage: 'French',
   userScore: 0,
   userWords: [],
   currentWord: {},
@@ -23,7 +23,7 @@ export default UserContext;
 export class UserProvider extends Component {
   constructor(props) {
     super(props);
-    const state = { user: {}, userLanguage: '', userScore: 0, userWords: [], currentWord: {}, error: null };
+    const state = { user: {}, userLanguage: 'French', userScore: 0, userWords: [], currentWord: {}, error: null };
 
     const jwtPayload = TokenService.parseAuthToken();
 
