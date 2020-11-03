@@ -41,12 +41,16 @@ class Header extends Component {
         <div className="left">
           {null}
         </div>
-        <h1 className="center">
-          <Link to="/">wordistry</Link>
-        </h1>
-        {TokenService.hasAuthToken()
-          ? this.renderLogoutLink()
-          : this.renderLoginLink()}
+        <div>
+          <h1 className="center">
+            <Link to="/">wordistry</Link>
+          </h1>
+        </div>
+        <div>
+          {TokenService.hasAuthToken()
+            ? this.renderLogoutLink()
+            : this.renderLoginLink()}
+        </div>
       </header>
     );
   }

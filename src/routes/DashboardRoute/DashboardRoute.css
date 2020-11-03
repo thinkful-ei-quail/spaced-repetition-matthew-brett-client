@@ -1,6 +1,8 @@
 .dashboard {
   width: 100vw;
-  height: 95vh;
+  height: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard > div > h2 {
@@ -17,6 +19,7 @@
   flex-direction: column;
   width: 30%;
   justify-content: center;
+  margin-top: 10px;
 }
 
 .userInfo a{
@@ -33,4 +36,16 @@
 .words > section > h3 {
   color: black;
   font-size: larger;
+}
+
+@media all and (max-width: 450px) {
+  .userInfo {
+    text-align: center;
+    width: 50%;
+  }
+
+  .words {
+    width: 80%;
+    height: auto;
+  }
 }

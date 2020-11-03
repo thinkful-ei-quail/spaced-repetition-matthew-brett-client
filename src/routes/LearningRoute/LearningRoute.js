@@ -5,7 +5,6 @@ import WordCard from '../../components/WordCard/WordCard';
 import './LearningRoute.css';
 
 class LearningRoute extends Component {
-  // TODO Implement and style Learning.
   static defaultProps = {
     match: {params: {} }
   }
@@ -21,19 +20,17 @@ class LearningRoute extends Component {
   };
 
   componentDidMount() {
+    this.loadNextWord();
+  }
+
+  loadNextWord = () => {
     // get the current word and pass it to the word card via props.
-    // TODO Make sure to change res in setCurrentWord call to the correct passed format.
-    // TODO Uncomment .catch statement once getHead is implemented server side. For now, ignore the error thats returned.
     /* LanguageService.getHead() response structure:
       nextWord: headWord.original,
       totalScore: req.language.total_score,
       wordCorrectCount: headWord.correct_count,
       wordIncorrectCount: headWord.incorrect_count,
     */
-    this.loadNextWord();
-  }
-
-  loadNextWord = () => {
     this.context.clearError();
     LanguageService.getHead()
       .then(res => {
@@ -49,8 +46,6 @@ class LearningRoute extends Component {
   }
 
   handleSubmit = (answer) => {
-    // TODO Apply changes to userScore based on correct/incorrect.
-    //      API call to /language/guess through LanguageService to submit answer and get reply about correctness.
     /* LanguageService.submitGuess() response structure:
       const response = {
         nextWord: wordList.head.value.original,

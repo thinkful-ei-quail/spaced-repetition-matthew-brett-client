@@ -25,3 +25,14 @@ header {
   right: 0;
   top: 0;
 }
+
+@media all and (max-width: 450px) {
+  header {
+    flex-direction: column;
+  }
+
+  .right {
+    position: relative;
+    text-align: center;
+  }
+}
